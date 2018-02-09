@@ -1,0 +1,30 @@
+README
+
+Files that should exist in directory:
+	Makefile
+	main.c
+	testsim.c
+	testing.data
+	makeargv.c
+	This README file
+	
+
+Getting Started: to get started, run the command: make proc_fan
+	This should create the .o files along with two executables, proc_fan and testsim.
+	
+To test the program: type the following command: ./proc_fan -n [pr_limit] ./testing.data
+	The available options are: -n for number of max processes or -h for help text. Any other options will exit the program.
+	The testing.data can be replaced with another file containing commands to be run. This file currently contains one command: testsim
+
+The testsim program uses two arguments: the first being sleeptime, the second being iterations to go through the loop.
+	ex. the command: "testsim 2 4" yields a process that runs sleep(2), 4 times.
+	
+	
+Some code was pulled from gnu.org (mainly getopt usage) as well as code pulled from chapter 2 and 3 of the Robbins book.
+
+Main issues:
+	Getting git initialized for this project (resolved, I hope)
+	I ran into some problems with getting the wait functions to work with pr_limit and pr_count within the fgets loop. (not resolved)
+	Issues getting testsim to run from within main program of proc_fan (resolved)
+	Implementing getargv for use with lines read from testing.data (resolved)
+	

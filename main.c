@@ -16,6 +16,10 @@ int main (int argc, char * argv[]){
 
 	int opt;
 
+	if (argc != 4){
+		printf("invalid number of arguments");
+		return -1;
+	}
 	//the getopt loop is based on a loop found on www.gnu.org for using getopt
 	while((opt = getopt(argc, argv, "hn:")) != -1){ //getoptions from command line 
 		switch (opt){
@@ -44,7 +48,7 @@ int main (int argc, char * argv[]){
 	int i;
 	int j;
 	
-	//pulled/edited from Exercise 3.2 in Robbins book
+	//some pieces pulled/edited from Exercise 3.2, 3.6, 3.7 in Robbins book
 	pr_limit = atoi(argv[2]);
 	input = fopen(argv[3], "r");
 	if (input == NULL){
@@ -57,7 +61,7 @@ int main (int argc, char * argv[]){
 			childpid = fork(); //if process count is under limit and fork is successful
 			printf("\nchild process created %ld, parent: %ld, child: %ld\n", (long)getpid(), (long)getppid(), (long)childpid);
 			pr_count++; //incr process count
-			printf("pr_count after fork: %d\n", pr_count);
+			//printf("pr_count after fork: %d\n", pr_count);
 			if((tokennum = makeargv(argstr, delim, &cmd)) != -1){ //check arg is valid and run command
 				execvp(cmd[0], &cmd[0]);
 				break;
